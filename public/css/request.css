@@ -1,0 +1,58 @@
+.container {
+    margin-top: 1rem;
+    display: flex;
+}
+.info{
+}
+.info-wrapper {
+   // text-align: center;
+    justify-content: center;
+   // margin: 0 auto;
+    font-size: 19px;
+    line-height: 0.5em;
+    min-width: 16em;
+    padding-left: 10px;
+    border: solid 1px #000000;
+    position: sticky;
+}
+.buttons{
+    width: 100%;
+    display: block;
+    height: 10em;
+    font-size: 20px;
+}
+.cards {
+    flex-wrap: wrap;
+    align-content: flex-start;
+    display: flex;
+}
+.card {
+    background-color: #F8F9FB;
+    border-radius: 6px;
+    padding: 12px 20px;
+    margin: 8px;
+    width: 20rem;
+    min-width: 17rem;
+    position: relative;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.15), 0 4px 4px rgba(0,0,0,0.15), 0 8px 8px rgba(0,0,0,0.15)
+}
+
+.card .button-wrapper {
+    bottom: 1rem;
+    right: 1rem;
+    position: absolute;
+}
+
+.card p {
+    margin: 2px;
+    color: #000000;
+}
+
+.card p:last-child {
+    margin-bottom: 1rem;
+}
+#buy{
+    margin-left: 25%;
+    margin-top: 10px;
+    background-color: mediumseagreen;
+}

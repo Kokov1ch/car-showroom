@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Заявки</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <link href="{{ asset('css/request.css') }}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="info">
+    <div class="info-wrapper">
+        {% for it in product %}
+            <p> Автомобиль <b>{{ it['brandName'] }} {{ it['modelName'] }}</b></p>
+            <p> Страна производитель: <b>{{ it['manufactorCountry'] }} </b></p>
+            <p> Количество дверей: <b>{{ it['numberOfDoors'] }} </b></p>
+            <p> Количество сидений: <b>{{ it['numberOfSeats'] }}  </b></p>
+            <p> Двигатель: <b>{{ it['engineType'] }}  </b></p>
+            <p> Расположение двигателя: <b>{{ it['engineLocation'] }}  </b></p>
+            <p> Объём двигателя: <b>{{ it['engineVolume'] }}  </b></p>
+            <p> Цена: <b>{{ it['price'] }}  </b>₽</p>
+        {% endfor %}
+    </div>
+        <br>
+        <div class="buttons">
+            <input type="submit" value="Провести тест драйв" style="width:200px; height:40px;" >
+            <input type="submit" value="Провести инспекцию" style="width:200px; height:40px;"> <br>
+            <form action={{ url('deal')}} method="post">
+                <input id = "buy" type="submit" value="Купить" style="width:200px; height:40px;">
+            </form>
+        </div>
+    </div>
+    <div class="result">
+        <div class="cards">
+            {% for card in cards %}
+            <div class="card">
+                <p> Заявка на<b> {{ card['request_name'] }}</b></p>
+                Дата заяки: <b> {{ card['date'] }}</b>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

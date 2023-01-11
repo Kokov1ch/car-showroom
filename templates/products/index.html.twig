@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Автомобили</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <link href="{{ asset('css/product.css') }}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <div class="checkBox">
+        <form action="" method="post">
+            <div class="manager-select">
+                <select style="width:200px; height:25px; font-size: 16px;">
+                    {% for manager in managers %}
+                    <option>{{ manager.managerFio }}</option>
+                    {% endfor %}
+                </select></div>
+            <div class="buttons">
+                <input type="submit" value="Бестселлеры"><br>
+                <input type="submit" value="Премиум"> <br>
+                <input type="submit" value="Малолитражки">
+            </div>
+            <fieldset>
+                <legend><strong>Марка</strong></legend>
+                    <div class="checkbox-wrapper">
+                        {%  for i in brands %}
+                        <input type="checkbox" name = {{ i }} value = {{ i }} %}>
+                        <label>{{ i }}</label>
+                            <br>
+                        {%  endfor %}
+                    </div>
+            </fieldset>
+            <fieldset>
+                <legend><strong>Объём двигателя</strong></legend>
+                <div class="checkbox-wrapper">
+                    <input type="text" name="volume_from" placeholder="От"><br>
+                    <input type="text" name="volume_to" placeholder="До">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend><strong>Цена</strong></legend>
+                <div class="checkbox-wrapper">
+                    <br>
+                    <input type="text" name="price_from" placeholder="От"><br>
+                    <input type="text" name="price_to" placeholder="До">
+                </div>
+            </fieldset>
+            <br>
+            <div class="buttons2">
+                <input type="submit" value="Найти">
+                <input type="submit" name="refresh" value="Очистить">
+                <input type="submit" name="compare" value="Сравнить"> <br>
+             </div>
+
+        </form>
+    </div>
+    <div class="result">
+        <div class="selected">
+        </div>
+        <div class="cards">
+            {% for card in cards %}
+            <div class="card">
+                        <p> Марка: <b> {{ card['brandName']}}</b></p>
+                <p> Модель:<b>{{  card['modelName']}}</b> </p>
+                <p> Объём двигателя:<b>{{  card['engineVolume']}}</b> </p>
+                <p> Цена:<b>{{  card['price']}}</b> </p>
+                <div class="button-wrapper">
+                    <form action={{ url('requests')}} method="get">
+                        <input id="qwe" type="checkbox">
+                        <input type="submit" value="Перейти"
+                        >
+                        <label>
+                            <input hidden type="text" name="products" value="2">
+                        </label>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

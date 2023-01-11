@@ -1,0 +1,23 @@
+.container {
+    margin-top: 1rem;
+    display: flex;
+}
+.select {
+    margin: 0 auto;
+    border: solid 1px #000000;
+    min-width: 700px;
+   // min-height: 700px;
+    position: sticky;
+    background: #9ed0ec;
+}
+#hello{
+    font-size: 30px;
+    margin-left: 65px;
+}
+select input{
+}
+.buyer {
+//    margin-left: 30%;
+//    height: 50px;
+//    width: 200px;
+}
