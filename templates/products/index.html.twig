@@ -7,7 +7,14 @@
     <link href="{{ asset('css/product.css') }}" rel="stylesheet"/>
 </head>
 <body>
+<div class=menu>
+    <ul>
+        <li class=active><a href="/">Автомобили</a></li>
+        <li class=active ><a href="/requests">Заявки</a></li>
+    </ul>
+</div>
 <div class="container">
+
     <div class="checkBox">
         <form action="" method="post">
             <div class="manager-select">
@@ -16,16 +23,11 @@
                     <option>{{ manager.managerFio }}</option>
                     {% endfor %}
                 </select></div>
-            <div class="buttons">
-                <input type="submit" value="Бестселлеры"><br>
-                <input type="submit" value="Премиум"> <br>
-                <input type="submit" value="Малолитражки">
-            </div>
             <fieldset>
                 <legend><strong>Марка</strong></legend>
                     <div class="checkbox-wrapper">
                         {%  for i in brands %}
-                        <input type="checkbox" name = {{ i }} value = {{ i }} %}>
+                        <input type="checkbox" name = {{ i }} value = {{ i }} }>
                         <label>{{ i }}</label>
                             <br>
                         {%  endfor %}
@@ -59,13 +61,18 @@
     <div class="result">
         <div class="selected">
         </div>
+        <div>
+        <details open>
+            <summary>
+                Все авто
+            </summary>
         <div class="cards">
             {% for card in cards %}
             <div class="card">
                         <p> Марка: <b> {{ card['brandName']}}</b></p>
                 <p> Модель:<b>{{  card['modelName']}}</b> </p>
-                <p> Объём двигателя:<b>{{  card['engineVolume']}}</b> </p>
-                <p> Цена:<b>{{  card['price']}}</b> </p>
+                <p> Объём двигателя:<b>{{  card['engineVolume']}}</b> л</p>
+                <p> Цена:<b>{{  card['price']}}</b> ₽</p>
                 <div class="button-wrapper">
                     <form action={{ url('requests')}} method="get">
                         <input id="qwe" type="checkbox">
@@ -79,7 +86,60 @@
             </div>
             {% endfor %}
         </div>
+        </details>
+        <details  open>
+            <summary>
+                Бестселлеры
+            </summary>
+            <div class="cards">
+                {% for card in cards %}
+                    <div class="card">
+                        <p> Марка: <b> {{ card['brandName']}}</b></p>
+                        <p> Модель:<b>{{  card['modelName']}}</b> </p>
+                        <p> Объём двигателя:<b>{{  card['engineVolume']}}</b> л</p>
+                        <p> Цена:<b>{{  card['price']}}</b> ₽</p>
+                        <div class="button-wrapper">
+                            <form action={{ url('requests')}} method="get">
+                                <input id="qwe" type="checkbox">
+                                <input type="submit" value="Перейти"
+                                >
+                                <label>
+                                    <input hidden type="text" name="products" value="2">
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </details>
+        <details open>
+            <summary>
+                Премиум
+            </summary>
+            <div class="cards">
+                {% for card in cards %}
+                    <div class="card">
+                        <p> Марка: <b> {{ card['brandName']}}</b></p>
+                        <p> Модель:<b>{{  card['modelName']}}</b> </p>
+                        <p> Объём двигателя:<b>{{  card['engineVolume']}}</b> л</p>
+                        <p> Цена:<b>{{  card['price']}}</b> ₽</p>
+                        <div class="button-wrapper">
+                            <form action={{ url('requests')}} method="get">
+                                <input id="qwe" type="checkbox">
+                                <input type="submit" value="Перейти"
+                                >
+                                <label>
+                                    <input hidden type="text" name="products" value="2">
+                                </label>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </details>
     </div>
+
+</div>
 </div>
 </body>
 </html>
