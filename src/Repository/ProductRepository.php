@@ -51,7 +51,7 @@ class ProductRepository extends ServiceEntityRepository
            ->getQuery()
            ->getResult();
     }
-    public function getProductInfoById(int $id):array
+    public function getProductInfoById(int $id): array
     {
         return $this->createQueryBuilder('s')
             ->select('b.brandName', 's.modelName', 't.engineVolume', 't.price', 't.numberOfDoors', 't.numberOfSeats', 't.engineType', 't.engineLocation', 'm.manufactorCountry')
@@ -62,6 +62,7 @@ class ProductRepository extends ServiceEntityRepository
             ->join('s.manufactor', 'm')
             ->where('s.manufactor=m.id')
             ->andWhere('s.id=:id')
+
             ->setParameter('id', $id)
             ->getQuery()
             ->getResult();

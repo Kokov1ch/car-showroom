@@ -65,17 +65,12 @@ legend {
     border-radius: 6px;
     padding: 12px 20px;
     margin: 8px;
-    width: 20rem;
+    width: 22rem;
     min-width: 17rem;
     position: relative;
     box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.15), 0 4px 4px rgba(0,0,0,0.15), 0 8px 8px rgba(0,0,0,0.15)
 }
 
-.card .button-wrapper {
-    bottom: 1rem;
-    right: 1rem;
-    position: absolute;
-}
 
 .card p {
     margin: 2px;
@@ -106,4 +101,68 @@ legend {
     transform:scale(1.5);
     opacity:0.9;
     cursor:pointer;
+}
+/* меню страниц */
+.menu {
+    background-color: #ffffff;
+    box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.4);
+    width: 10.5%;
+
+}
+/*Теперь уберем маркеры со списка и произведем выравнивание его элементов в одну
+линию*/
+.menu li {
+    display: inline-flex;
+    vertical-align: top;
+    padding: 10px;
+    color: #6f6d6d;
+}
+.menu a {
+    text-decoration: none;
+    color: #6f6d6d;
+}
+.menu a:hover {
+    color: #e37b7b;
+}
+.menu li:hover {
+    cursor: pointer;
+    color: #f8f8f8;
+}
+.menu ul {
+    padding: 0px;
+}
+
+summary::-webkit-details-marker {
+    display: none
+}
+
+summary::after {
+   // background: red;
+    border-radius: 5px;
+    content: "▼";
+    color: #e00c0c;
+    font-size: 0.7em;
+    //font-weight: bold;
+    padding: 0;
+    text-align: center;
+    width: 40px;
+    cursor: pointer;
+}
+details summary::-webkit-details-marker {
+    display: none
+}
+details > summary {
+    list-style: none;
+}
+details[open] summary::after {
+    content: "▲";
+}
+summary{
+    font-size: 30px;
+    color: #918686;
+    user-select: none;
+    cursor: pointer;
+}
+details{
+    margin-left: 30px;
 }

@@ -8,16 +8,24 @@
     min-width: 700px;
    // min-height: 700px;
     position: sticky;
-    background: #9ed0ec;
+    background: #b5cbdc;
 }
 #hello{
-    font-size: 30px;
-    margin-left: 65px;
+    font-size: 25px;
+    margin-left: 105px;
+    min-height: 20px;
 }
-select input{
+select{
+    width:287px;
+    height:40px;
+    font-size: 21px;
+    margin-left: -34px;
 }
 .buyer {
 //    margin-left: 30%;
 //    height: 50px;
 //    width: 200px;
+}
+.user-select{
+    margin-left: 35%;
 }

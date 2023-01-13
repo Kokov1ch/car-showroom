@@ -38,6 +38,7 @@
 }
 
 .card .button-wrapper {
+    margin-top: 10px;
     bottom: 1rem;
     right: 1rem;
     position: absolute;
