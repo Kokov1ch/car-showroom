@@ -38,6 +38,10 @@ class RequestRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+//    public function findRequestsByProductId(int $productId): Request{
+//        return $this->createQueryBuilder('s')
+//            ->where('s.product')
+//    }
     public function getBuyerRequestCardsById(int $id): array
     {
         return $this->createQueryBuilder('s')
@@ -51,7 +55,7 @@ class RequestRepository extends ServiceEntityRepository
     public function getRequestCards(): array
     {
         return $this->createQueryBuilder('s')
-            ->select('p.modelName', 'b.buyerFio', 't.price','br.brandName', 't.engineVolume', 't.engineType')
+            ->select('p.id, p.modelName', 'b.buyerFio', 't.price','br.brandName', 't.engineVolume', 't.engineType')
             ->join('s.buyer', 'b')
             ->where('s.buyer=b.id')
             ->join('s.product', 'p')
@@ -60,7 +64,30 @@ class RequestRepository extends ServiceEntityRepository
             ->where('p.brand=br.id')
             ->join('p.technicalData','t')
             ->where('p.technicalData=t.id')
-            ->distinct()
+//            ->andWhere('s.manager=:id')
+//            ->setParameter('id', $id)
+            ->orderBy('b.id','DESC')
+            ->getQuery()
+            ->getArrayResult();
+    }
+    public function getBestSallers(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->select('p.modelName', 't.price','br.brandName', 't.engineVolume')
+            ->join('s.buyer', 'b')
+            ->where('s.buyer=b.id')
+            ->join('s.product', 'p')
+            ->where('s.product=p.id')
+            ->join('p.brand', 'br')
+            ->where('p.brand=br.id')
+            ->join('p.technicalData','t')
+            ->where('p.technicalData=t.id')
+            ->join('s.')
+//           ->addSelect("SELECT model_name, brand_name, price, engine_volume FROM request
+//                                JOIN brand ON product.brand_id=brand.id
+//                                JOIN technical_data ON product.technical_data_id=technical_data.id
+//                                JOIN product ON request.product_id=product.id
+//                                JOIN request_step ON request.id=request_step.request_id")
             ->getQuery()
             ->getArrayResult();
     }

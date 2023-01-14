@@ -29,7 +29,7 @@ class RequestStep
     private $type_id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Request::class)
+     * @ORM\ManyToOne(targetEntity=Request::class, cascade={"remove"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $request_id;

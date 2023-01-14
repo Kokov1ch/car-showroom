@@ -10,33 +10,34 @@
 <div class="container">
     <div class="select">
         <form method="post">
-
             <p id="hello">Введите персональные данные покупателя</p>
-                <div class="user-select">
-                <select>
+            <p style="margin-left: 23%" id="hello">или выберите уже существующего</p>
+            <div class="user-select">
+                <select name="buyer">
                     {% for buyer in buyers %}
-                    <option>
-                        {{ buyer.buyerFio}}
-                    </option>
+                        <option selected="{{ buyer.buyerFio }}" value="{{ buyer.id }}">
+                            {{ buyer.buyerFio}}
+                        </option>
                     {% endfor %}
                 </select>
             </div>
+            <input style="margin-left: 45%;margin-top: 10px" type="submit" value="Выбрать" name="choose">
             <div style="margin-top: 10px">
-            <p>
-                <input type="text" placeholder="ФИО" style="width:280px; height:40px;margin-left: 30%;font-size: 18px;">
-            </p>
-            <p>
-                <input type="text" placeholder="Серия паспорта" style="width:280px; height:40px;margin-left: 30%;font-size: 18px">
-            </p>
-            <p>
-                <input type="text" placeholder="Номер паспорта" style="width:280px; height:40px;margin-left: 30%;font-size: 18px">
-            </p>
-            <p>
-                <input type="submit" value="Оформить" style="width:289px; height:40px;margin-left: 30%; background: mediumseagreen">
-            </p>
+                <p>
+                    <input type="text" placeholder="ФИО" name="fio" style="width:280px; height:40px;margin-left: 30%;font-size: 18px;">
+                </p>
+                <p>
+                    <input type="text" placeholder="Серия паспорта" name="series" style="width:280px; height:40px;margin-left: 30%;font-size: 18px">
+                </p>
+                <p>
+                    <input type="text" placeholder="Номер паспорта" name="number" style="width:280px; height:40px;margin-left: 30%;font-size: 18px">
+                </p>
+                <p>
+                    <input type="submit" value="Оформить" name="send" style="width:289px; height:40px;margin-left: 30%; background: mediumseagreen">
+                </p>
             </div>
         </form>
-        </div>
+    </div>
 
 </div>
 </body>

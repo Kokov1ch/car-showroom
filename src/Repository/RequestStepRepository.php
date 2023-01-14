@@ -47,6 +47,14 @@ class RequestStepRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function getRequestsWithTypes(){
+        return $this->createQueryBuilder('s')
+            ->select('s.date', 'r')
+            ->join('s.request_id', 'r')
+            ->andWhere('s.request_id=r.id')
+            ->getQuery()
+            ->getResult();
+    }
 //    /**
 //     * @return RequestStep[] Returns an array of RequestStep objects
 //     */

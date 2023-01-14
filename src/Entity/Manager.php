@@ -30,7 +30,7 @@ class Manager
     private $baseRate;
 
     /**
-     * @ORM\OneToMany(targetEntity=Request::class, mappedBy="manager")
+     * @ORM\OneToMany(targetEntity=Request::class, mappedBy="manager", cascade={"remove"})
      */
     private $requests;
 

@@ -12,13 +12,14 @@
 }
 #hello{
     font-size: 25px;
-    margin-left: 105px;
+    margin-left: 115px;
     min-height: 20px;
+    padding-bottom: 0;
 }
 select{
-    width:287px;
+    width:280px;
     height:40px;
-    font-size: 21px;
+    font-size: 18px;
     margin-left: -34px;
 }
 .buyer {
