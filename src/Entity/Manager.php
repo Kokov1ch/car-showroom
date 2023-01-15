@@ -43,7 +43,11 @@ class Manager
     {
         return $this->id;
     }
-
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
     public function getManagerFio(): ?string
     {
         return $this->managerFio;

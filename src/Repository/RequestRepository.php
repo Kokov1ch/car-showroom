@@ -54,6 +54,7 @@ class RequestRepository extends ServiceEntityRepository
     }
     public function getRequestCards(): array
     {
+//        var_dump($id);
         return $this->createQueryBuilder('s')
             ->select('p.id, p.modelName', 'b.buyerFio', 't.price','br.brandName', 't.engineVolume', 't.engineType')
             ->join('s.buyer', 'b')
@@ -67,6 +68,18 @@ class RequestRepository extends ServiceEntityRepository
 //            ->andWhere('s.manager=:id')
 //            ->setParameter('id', $id)
             ->orderBy('b.id','DESC')
+            ->getQuery()
+            ->getArrayResult();
+    }
+    public function getRequestsWithBuyersAndManagers(){
+        return $this->createQueryBuilder('s')
+            ->select('b.buyerFio, s.id, m.managerFio, p.modelName')
+            ->join('s.manager', 'm')
+            ->where('s.manager=m.id')
+            ->join('s.buyer', 'b')
+            ->where('s.buyer=b.id')
+            ->join('s.product', 'p')
+            ->where('s.product=p.id')
             ->getQuery()
             ->getArrayResult();
     }

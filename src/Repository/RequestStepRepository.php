@@ -55,6 +55,19 @@ class RequestStepRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function getAllDistinct(){
+        return $this->createQueryBuilder('s')
+            ->select('s')
+            ->distinct()
+            ->getQuery()
+            ->getResult();
+    }
+    public function getTestDrives(){
+        return $this->createQueryBuilder('s')
+            ->select('s.request_id')
+            ->getQuery()
+            ->getResult();
+    }
 //    /**
 //     * @return RequestStep[] Returns an array of RequestStep objects
 //     */

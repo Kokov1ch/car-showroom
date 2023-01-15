@@ -28,12 +28,24 @@ class ProductsController extends AbstractController
         $brands = [];
         $allBrands = [];
         $hideFlag = true;
-        $manager = $request->get('manager');
-        var_dump($manager);
+        //$manager = $request->get('manager');
+        //$managerId=NULL;
+        //var_dump($manager);
         foreach ($brandRepository->findAll() as $brand){
             $allBrands[] = $brand->getBrandName();
         }
-        if ($request->get('manager')!=NULL) $manager = $request->get('manager');
+//        if ($request->get('manager')!=NULL) {
+            if(session_id() === "")
+            {
+                session_start();
+                $manager = $request->get('manager');
+                $_SESSION['manager'] = $manager;
+                $manager = $_SESSION['manager'];
+            }
+            //var_dump($_SESSION['manager']);
+        if ($_SESSION['manager']==NULL)$manager = NULL;
+        else $manager = $_SESSION['manager'];
+//        }
 
         if ($request->get('minV')!=NULL) $minVolume = $request->get('minV');
 

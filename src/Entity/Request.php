@@ -23,12 +23,12 @@ class Request
     private $manager;
 
     /**
-     * @ORM\OneToOne(targetEntity=Product::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Product::class, cascade={"remove"})
      */
     private $product;
 
     /**
-     * @ORM\OneToOne(targetEntity=Buyer::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Buyer::class, cascade={"remove"})
      */
     private $buyer;
 

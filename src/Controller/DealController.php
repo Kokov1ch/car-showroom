@@ -25,19 +25,22 @@ class DealController extends AbstractController
 //        $curBuyer = $request->get('buyer');
 //        if($request->get('send')==NULL) {
             $fio = NULL;
-            $managerId = NULL;
-            $productId = NULL;
+            //$managerId = NULL;
+            //$productId = NULL;
             $series = NULL;
             $number = NULL;
 //        }
 //        else{
-            var_dump($productId);
             $fio = $request->get('fio');
             $series = $request->get('series');
             $number = $request->get('number');
-            $managerId = $request->get('manager');
             $productId = $request->get('product');
             $curBuyer =$request->get('buyer');
+
+        if(session_id() === "") session_start();
+        if ($_SESSION['manager']==NULL) $managerId = NULL;
+        else $managerId = $_SESSION['manager'];
+           // var_dump($productId);
 //        }
 //        if ($request->get('fio')!=NULL)
 //            $fio = $request->get('fio');
@@ -76,13 +79,19 @@ class DealController extends AbstractController
                     $entityManager->flush();
                     return $this->redirectToRoute('requests');
                 } else {
+                    //var_dump($curBuyer);
                     $buyer = $buyerRepository->find($curBuyer);
                     $requestProduct = new \App\Entity\Request();
                     $product = $productRepository->find($productId);
                     $manager = $managerRepository->find($managerId);
+//                    var_dump($product->getId());
+//                    var_dump($manager->getManagerFio());
                     $requestProduct->setBuyer($buyer);
                     $requestProduct->setProduct($product);
                     $requestProduct->setManager($manager);
+//                    var_dump($requestProduct->getProduct()->getId());
+//                    var_dump($requestProduct->getManager()->getId());
+//                    var_dump($requestProduct->getBuyer()->getId());
                     $entityManager->persist($requestProduct);
                     $entityManager->flush();
                     return $this->redirectToRoute('requests');
