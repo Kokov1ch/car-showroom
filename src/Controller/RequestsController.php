@@ -27,7 +27,6 @@ class RequestsController extends AbstractController
                           BuyerRepository $buyerRepository, Request $request, RequestTypeRepository $requestTypeRepository): Response
     {
         $names = [];
-        //$tmp = [];
         $test_drives = [];
         $inspections = [];
         $deals = [];
